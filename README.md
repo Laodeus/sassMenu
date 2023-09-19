@@ -1,27 +1,69 @@
-# React + TypeScript + Vite
+# Menu Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+A customizable menu component built with React and TypeScript. This component allows you to easily create navigation menus for your web applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [Usage](#usage)
+- [Props](#props)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Usage
+To use the Menu component, simply import it into your React application and pass the necessary props:
 
-- Configure the top-level `parserOptions` property like this:
+```javascript
+import React from 'react';
+import Menu from 'menu-component';
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+const menuElements = [
+  {
+    name: 'Home',
+    action: ()=>{/* action */},
+    icon : "⌂"
+  },
+  // Add more menu elements here
+];
+
+function App() {
+  return (
+    <div className="App">
+      <Menu menuElements={menuElements} />
+    </div>
+  );
+}
+
+export default App;
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Props
+The Menu component accepts the following props:
+
+- menuElements (required): An array of menu elements to display.
+Each menu element should be an object with the following properties:
+
+- name (string): The name of the menu item.
+- action (function): the action associated with the menu item.
+- icon (string): the icon string format associated with the menu item
+
+```javascript
+const menuElements : MenuElements[] = [
+  {
+    name: 'Home',
+    icon: '⌂',
+    action: ()=>{console.log('home')}
+  },
+  {
+    name: 'About',
+    icon: 'ℹ',
+    action: ()=>{console.log('about')}
+  },
+  {
+    name: 'Contact',
+    icon: '✉️',
+    action: ()=>{console.log('contact')}
+  },
+    ... 
+]
+```
